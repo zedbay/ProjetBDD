@@ -1,4 +1,5 @@
 <?php require("Codes/RelSchema.php"); ?>
+<?php include("Codes/Controller.php") ?>
 
 <!DOCTYPE html>
 <html>
@@ -7,7 +8,8 @@
 </head>
 <body>
 	<form>
-		<textarea>tets</textarea>
+		<textarea></textarea>
+		<input type="submit" name="Envoyer">
 	</form>
 </body>
 </html>
