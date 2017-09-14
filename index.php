@@ -6,6 +6,8 @@
 	<title> Projet SGBD </title>
 </head>
 <body>
-	<h1>TEST</h1>
+	<form>
+		<textarea>tets</textarea>
+	</form>
 </body>
 </html>

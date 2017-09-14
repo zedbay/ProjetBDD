@@ -1,5 +1,5 @@
 <?php 
-	
+
 	class RelSchema {
 		
 		private $nom;
@@ -23,8 +23,9 @@
 
 		public function setTypeCol($typeCol) {
 			$this->$typeCol;
-		}
-		
+		}	
 	}
+
+	//echo "hello world"; 
 
  ?>
