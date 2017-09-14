@@ -26,7 +26,6 @@
 		}
 
 		public function getNom() {
-			echo "hell";
 			echo $this->nom;
 			//return($this->$nom);
 		}
