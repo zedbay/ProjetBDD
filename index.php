@@ -18,7 +18,7 @@
 			<table>
 				<tr>
 					<td>
-						<input type="text" name="commande" id="commande" required="required"/>
+						<input type="text" name="commande" id="commande" placeholder="<?php if(isset($commande)) { echo $commande; } ?>" required="required"/>
 					</td>
 					<td>
 						<input type="submit" value="RUN" id="run" name="run"/>

@@ -5,7 +5,7 @@
 		$typeCommande =  $detailCommande[0];
 		switch ($typeCommande) {
 			case "create":
-				//create($detailCommande[1],$detailCommande[2]);
+				create($detailCommande[1],$detailCommande[2]);
 			break;
 
 			default:
@@ -15,8 +15,6 @@
 	}
 
 	function create($nom,$nombreCol) {
-		//echo $nom . $nombreCol;
 		$newRelSchema = new RelSchema($nom,$nombreCol);
-		echo $newRelSchema->getNom();
 	}
 ?>
