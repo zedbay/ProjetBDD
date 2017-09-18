@@ -13,7 +13,8 @@
 			for($i=0;$i<$this->_nombreCol;$i++) {
 				$this->setTypeCol($detailCommande[($i+3)]);
 			}
-			$this->afficheTypeCol();
+			//$this->afficheTypeCol();
+			$this->stringIsCorrect("string10");
 		}
 
 		public function setNom($nom) { $this->_nom = $nom; }
@@ -38,6 +39,12 @@
 		public function getNom() { return($this->_nom); }
 		public function getNombreCol() { return($this->_nombreCol); }
 		public function getTypeCol() { return($this->_typeCol); }
+
+		public function stringIsCorrect ($valeur) {
+			if(preg_match("#string#", $valeur)) {
+				echo "Ok";
+			} else { echo "not ok"; }
+		}
 
 
 		//fonction de dev =>
