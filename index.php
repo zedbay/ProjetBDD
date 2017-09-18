@@ -1,4 +1,5 @@
 <?php require("Codes/RelSchema.php"); ?>
+<?php require("Codes/PageId.php"); ?>
 <?php include("Codes/Controller.php") ?>
 
 <!DOCTYPE html>

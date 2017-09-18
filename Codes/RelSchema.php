@@ -13,13 +13,10 @@
 			for($i=0;$i<$this->_nombreCol;$i++) {
 				$this->setTypeCol($detailCommande[($i+3)]);
 			}
-			//$this->afficheTypeCol();
-			$this->stringIsCorrect("string10");
 		}
 
 		public function setNom($nom) { $this->_nom = $nom; }
 		public function setNombreCol($nombreCol) { $this->_nombreCol = $nombreCol; }
-
 		public function setTypeCol($typeColRajout) { 
 			switch($typeColRajout) {
 				case "int":
@@ -28,10 +25,12 @@
 				case "float":
 					array_push($this->_typeCol, $typeColRajout);
 				break;
-				case "string10":
+				//Expression régulière ; commence par "string" puis un chiffre >0
+				case (preg_match('#^string[1-9]#', $typeColRajout) ? true : false):
 					array_push($this->_typeCol, $typeColRajout);
 				break;
 				default:
+					$erreur = "Type non reconnue";
 				break;
 			}
 		}
@@ -40,16 +39,29 @@
 		public function getNombreCol() { return($this->_nombreCol); }
 		public function getTypeCol() { return($this->_typeCol); }
 
-		public function stringIsCorrect ($valeur) {
-			if(preg_match("#string#", $valeur)) {
-				echo "Ok";
-			} else { echo "not ok"; }
-		}
-
-
-		//fonction de dev =>
-		public function afficheTypeCol() {
-			print_r($this->_typeCol);
+		public function toString() {
+			$detail = "La relation " . $this->_nom . " possède " . $this->_nombreCol . " colonne(s) de type(s) ; ";
+			for($i=0;$i<(($this->_nombreCol)-1);$i++){
+				$detail = $detail . $this->_typeCol[$i] . " - ";
+			}
+			$detail = $detail . $this->_typeCol[($this->_nombreCol)-1];
+			return($detail);
 		}
 	}
  ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

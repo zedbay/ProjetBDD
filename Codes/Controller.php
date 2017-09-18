@@ -16,5 +16,6 @@
 
 	function create($detailCommande) {
 		$newRelSchema = new RelSchema($detailCommande);
+		//echo $newRelSchema->toString();
 	}
 ?>
