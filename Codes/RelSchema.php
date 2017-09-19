@@ -25,8 +25,8 @@
 				case "float":
 					array_push($this->_typeCol, $typeColRajout);
 				break;
-				//Expression régulière ; commence par "string" puis un chiffre >0
-				case (preg_match('#^string[1-9]#', $typeColRajout) ? true : false):
+				//Expression régulière ; commence par "string" puis (et fini par) un chiffre d* (d chiffre)
+				case (preg_match('#^string(\d)*$#', $typeColRajout) ? true : false):
 					array_push($this->_typeCol, $typeColRajout);
 				break;
 				default:
