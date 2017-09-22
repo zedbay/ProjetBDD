@@ -16,6 +16,8 @@
 
 	function create($detailCommande) {
 		$newRelSchema = new RelSchema($detailCommande);
-		echo $newRelSchema->toString();
 	}
+
+	$newDM = new DiskManager();
+	$newDM->createFile(8);
 ?>

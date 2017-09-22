@@ -1,6 +1,8 @@
 <?php require("Codes/RelSchema.php"); ?>
 <?php require("Codes/PageId.php"); ?>
+<?php require("Codes/DiskManager.php"); ?>
 <?php include("Codes/Controller.php") ?>
+
 
 <!DOCTYPE html>
 <html>

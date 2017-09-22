@@ -3,27 +3,22 @@
 	class DiskManager {
 
 		public function createFile($fileId) {
-
-			$handle = fopen("/Data_"+$fileId+".rf", w+);
-
+			//définition du nom du fichier 
+			$nameFile = "DB/Data_" . $fileId . ".rf";
+			//Création du fichier ou ouverture s'il existe
+			$newFile = fopen($nameFile, "w+");
 		}
 
 		public function addPage($idx) {
 
-
-			return 
 		}
 
-		public function readPage(PageId, Buffer) {
-
-		}
-
-		public function writePage(PageId, Buffer) {
+		public function readPage($PageId, $Buffer) {
 
 		}
 
-		
+		public function writePage($PageId, $Buffer) {
 
-
-
+		}
 	}
+?>
