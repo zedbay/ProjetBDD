@@ -15,8 +15,6 @@
 
 		public function getFildeId () { return($this->_fileId); }
 		public function getIdx () { return($this->_idx); }
-
-
+		
 	}
-
  ?>

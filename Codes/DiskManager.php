@@ -9,15 +9,15 @@
 			$newFile = fopen($nameFile, "w+");
 		}
 
-		public function addPage($idx) {
+		public function addPage($fileId) {
+			//$newPageId = new PageId($fileId,);
+		}
+
+		public function readPage($pageId, $buffer) {
 
 		}
 
-		public function readPage($PageId, $Buffer) {
-
-		}
-
-		public function writePage($PageId, $Buffer) {
+		public function writePage($pageId, $buffer) {
 
 		}
 	}

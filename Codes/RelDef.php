@@ -3,7 +3,7 @@
 	/**
 	* 
 	*/
-	class RelDef
-	{
+	class RelDef {
 		
 	}
+?>
