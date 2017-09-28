@@ -15,8 +15,11 @@
 	}
 	
 	$newDM = new DiskManager();
+
 	$newPageId = $newDM->addPage(8);
 	$buffer = $newDM->readPage($newPageId);	
+
+	$newDM->writePage($newPageId,$buffer);
 	
 	if (isset($_POST['commande'])) {
 		$commande = $_POST['commande'];

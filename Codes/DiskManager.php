@@ -23,7 +23,6 @@
 			return($newPageId);
 		}
 
-		//l'argument pageId est une instance de PageId
 		public function readPage($pageId) {
 			$buffer;
 			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
@@ -37,9 +36,12 @@
 
 		public function writePage($pageId, $buffer) {
 			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
-			$newFile = fopen($nameFile, "w");
+			$newFile = fopen($nameFile, "a+");
 			$pageIdx = $pageId->getIdx();
-
+			$newTaille = (filesize($nameFile)-4096);
+			fseek($newFile, ($pageIdx*4096));
+			ftruncate($newFile, $newTaille);
+			fputs($newFile,$buffer);
 			fclose($newFile);
 		}
 	}
