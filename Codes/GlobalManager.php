@@ -4,7 +4,6 @@
 	require("Codes/PageId.php"); 
 	require("Codes/DiskManager.php"); 
 
-	//tets si l'instance unique a été crée 	
 	init(); 
 	function init () {	
 		//Création de l'instance unique de DbDef si elle n'existe pas 
@@ -12,22 +11,24 @@
 			require("Codes/DbDef.php");
 			$NewDbDef= new DbDef(array(),0);
 			$_SESSION['InitBd'] = true;	
-		}	
+		}
 	}
+	$newDM = new DiskManager();
+	$newDM->addPage(8);
 	
 	if (isset($_POST['commande'])) {
-			$commande = $_POST['commande'];
-			$detailCommande = explode(" ", $commande);
-			$typeCommande =  $detailCommande[0];
-			switch ($typeCommande) {
-				case "create":
-					create($detailCommande);
-				break;
-				default:
-					$erreur = "Commande non reconnue";
-				break;
-			}
+		$commande = $_POST['commande'];
+		$detailCommande = explode(" ", $commande);
+		$typeCommande =  $detailCommande[0];
+		switch ($typeCommande) {
+			case "create":
+				create($detailCommande);
+			break;
+			default:
+				$erreur = "Commande non reconnue";
+			break;
 		}
+	}
 
 
 	function create($detailCommande) {
