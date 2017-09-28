@@ -13,10 +13,10 @@
 			$_SESSION['InitBd'] = true;	
 		}
 	}
+	
 	$newDM = new DiskManager();
 	$newPageId = $newDM->addPage(8);
 	$buffer = $newDM->readPage($newPageId);	
-	echo $buffer;
 	
 	if (isset($_POST['commande'])) {
 		$commande = $_POST['commande'];

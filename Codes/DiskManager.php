@@ -29,14 +29,18 @@
 			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
 			$newFile = fopen($nameFile, "r");
 			$pageIdx = $pageId->getIdx();
-			//ne fonctionne pas
-			$buffer = stream_get_line($newFile,(4096*($pageIdx+1)));
+			fseek($newFile, ($pageIdx*4096));
+			$buffer = fread($newFile, 4096);
 			fclose($newFile);
 			return($buffer);
 		}
 
 		public function writePage($pageId, $buffer) {
-
+			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
+			$newFile = fopen($nameFile, "w");
+			$pageIdx = $pageId->getIdx();
+			
+			fclose($newFile);
 		}
 	}
 ?>
