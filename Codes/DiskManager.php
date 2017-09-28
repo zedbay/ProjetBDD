@@ -13,11 +13,14 @@
 		public function addPage($fileIdx) {
 			$pageVide = "0";
 			$nameFile = "DB/Data_" . $fileIdx . ".rf";
-			$newFile = fopen($nameFile, "w+");
+			$newFile = fopen($nameFile, "a+");
 			for($i=0;$i<4096;$i++) {
 				fputs($newFile, $pageVide);
 			}
+			$tailleFichier = filesize($nameFile);
 			fclose($newFile);
+			$newPageId = new PageId($fileIdx,(($tailleFichier/4096)-1));
+			return($newPageId);
 		}
 
 		public function readPage($pageId, $buffer) {

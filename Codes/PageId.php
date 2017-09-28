@@ -17,4 +17,5 @@
 		public function getIdx () { return($this->_idx); }
 		
 	}
+	
  ?>

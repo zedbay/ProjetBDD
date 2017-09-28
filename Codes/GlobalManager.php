@@ -14,7 +14,7 @@
 		}
 	}
 	$newDM = new DiskManager();
-	$newDM->addPage(8);
+	$newDM->addPage(8);	
 	
 	if (isset($_POST['commande'])) {
 		$commande = $_POST['commande'];
