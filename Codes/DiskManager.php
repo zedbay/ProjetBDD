@@ -39,7 +39,7 @@
 			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
 			$newFile = fopen($nameFile, "w");
 			$pageIdx = $pageId->getIdx();
-			
+
 			fclose($newFile);
 		}
 	}
