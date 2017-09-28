@@ -23,8 +23,16 @@
 			return($newPageId);
 		}
 
-		public function readPage($pageId, $buffer) {
-
+		//l'argument pageId est une instance de PageId
+		public function readPage($pageId) {
+			$buffer;
+			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
+			$newFile = fopen($nameFile, "r");
+			$pageIdx = $pageId->getIdx();
+			//ne fonctionne pas
+			$buffer = stream_get_line($newFile,(4096*($pageIdx+1)));
+			fclose($newFile);
+			return($buffer);
 		}
 
 		public function writePage($pageId, $buffer) {
