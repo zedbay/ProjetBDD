@@ -8,15 +8,16 @@
 		private $_fildeId;
 		private $_relSchema;
 
-		public function __construct() {
-
+		public function __construct($fileId,$relSchema) {
+			$this->setFileId($fileId);
+			$this->setRelSchema($relSchema);
 		}
 
-		public function setFileId() { }
-		public function setRelDef() { }
+		public function setFileId($fileId) { $this->_fildeId = $fileId; }
+		public function setRelSchema($relShema) { $this->_relSchema = $relShema; }
 
-		public function getFileId() { }
-		public function getRelDef() { }
+		public function getFileId() { return($this->_fildeId); }
+		public function getRelSchema() { return($this->_relSchema); }
 		
 	}
 ?>
