@@ -6,7 +6,7 @@
 	class RelDef {
 		
 		private $_fildeId;
-		private $_relDef;
+		private $_relSchema;
 
 		public function __construct() {
 

@@ -15,9 +15,9 @@
 		}
 	}
 
-	$newPageId = $newDM->addPage(8);
-	$buffer = $newDM->readPage($newPageId);	
-	$newDM->writePage($newPageId,$buffer);
+	//$newPageId = $newDM->addPage(8);
+	//$buffer = $newDM->readPage($newPageId);	
+	//$newDM->writePage($newPageId,$buffer);
 	
 	if (isset($_POST['commande'])) {
 		//récupération de la commande de l'utilisateur
@@ -27,11 +27,7 @@
 		$typeCommande =  $detailCommande[0];
 		switch ($typeCommande) {
 			case "create":
-				$typesDesColonnes = array();
-				for($i=3;$i<$detailCommande.sizeof();$i++) {
-					array_push($typesDesColonnes, $detailCommande[$i]);
-				}
-				createRelation($detailCommande[1],$detailCommande[2],$typesDesColonnes);
+				createRelation($detailCommande);
 			break;
 			default:
 				$erreur = "Commande non reconnue";
@@ -44,14 +40,23 @@
 		//$newRelSchema = new RelSchema($detailCommande);
 	//}
 
-	function createRelation($nomRelation,$nombreColonnes,$typesDesColonnes) {
-		//echo "Nom de la relation : " . $nomRelation;
-		//echo "Nombre de colonnes" . $nombreColonnes;
-		echo $typesDesColonnes[O];
-		for($i=0;$i<$typesDesColonnes.sizeof();$i++) {
-			echo "type" . $i . " : " . $typesDesColonnes[$i];
+	function createRelation($detailCommande) {
+		$nomRelation = $detailCommande[1];
+		$nombreDeColonne = $detailCommande[2];
+		$typeColonne = array();
+		for($i=3;$i<sizeof($detailCommande);$i++) {
+			array_push($typeColonne,$detailCommande[$i]);
 		}
-		//$NewDbDef->ajoutRelation();
+
+	}
+
+
+	//fonction de test
+	function afficheTableau($tab) {
+		for($i=0;$i<sizeof($tab);$i++) {
+			echo $tab[$i];
+			echo " - ";
+		}
 	}
 ?>
 
