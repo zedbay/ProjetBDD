@@ -19,7 +19,8 @@
 		public function incrementationCompteur() {
 			$this->_compteurDeRelation += 1;
 		}
-		public function ajoutRelation () {
+		public function ajoutRelation ($relDef) {
+			array_push($this->_relDefTab, $relDef);
 			$this->incrementationCompteur();
 		}
 	}
