@@ -2,8 +2,9 @@
 	
 	class DbDef {
 
-		private $_relDef; 
+		private $_relDefTab; 
 		private $_compteurDeRelation;
+
 		public function __construct ($relDef,$compteurDeRelation) {
 			$this->setRelDef($relDef);
 			$this->setCompteurDeRealtion($compteurDeRelation);
