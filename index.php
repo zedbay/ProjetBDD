@@ -1,4 +1,5 @@
 <?php
+	require("Codes/DbDef.php");
 	session_start(); 
 	include("Codes/GlobalManager.php") 
 ?>
