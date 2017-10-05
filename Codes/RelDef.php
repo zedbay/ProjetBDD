@@ -1,8 +1,5 @@
 <?php
 
-	/**
-	* 
-	*/
 	class RelDef {
 		
 		private $_fildeId;

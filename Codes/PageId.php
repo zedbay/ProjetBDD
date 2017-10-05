@@ -13,7 +13,7 @@
 		public function setFileId ($fileId) { $this->_fileId=$fileId; }
 		public function setIdx ($idx) { $this->_idx=$idx; }
 
-		public function getFildeId () { return($this->_fileId); }
+		public function getFileId () { return($this->_fileId); }
 		public function getIdx () { return($this->_idx); }
 		
 	}

@@ -17,8 +17,9 @@
 			for($i=0;$i<4096;$i++) {
 				fputs($newFile, $pageVide);
 			}
-			$tailleFichier = filesize($nameFile);
 			fclose($newFile);
+			clearstatcache();
+			$tailleFichier = filesize($nameFile);
 			$newPageId = new PageId($fileIdx,(($tailleFichier/4096)-1));
 			return($newPageId);
 		}
@@ -35,7 +36,7 @@
 		}
 
 		public function writePage($pageId, $buffer) {
-			$nameFile = "DB/Data_" . $pageId->getFildeId() . ".rf";
+			$nameFile = "DB/Data_" . $pageId->getFileId() . ".rf";
 			$newFile = fopen($nameFile, "a+");
 			$pageIdx = $pageId->getIdx();
 			$newTaille = (filesize($nameFile)-4096);
@@ -44,5 +45,6 @@
 			fputs($newFile,$buffer);
 			fclose($newFile);
 		}
+
 	}
 ?>
