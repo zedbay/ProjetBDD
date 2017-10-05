@@ -2,16 +2,16 @@
 
 	require("Codes/RelSchema.php"); 
 	require("Codes/PageId.php"); 
-	require("Codes/DiskManager.php"); 
-	$newDM = new DiskManager();
+	require("Codes/DiskManager.php");
+	require("Codes/RelDef.php"); 
 
 	init(); 
 	function init () {	
 		//Création de l'instance unique de DbDef si elle n'existe pas 
-		if($_SESSION['InitBd'] != true) { 
-			require("Codes/DbDef.php");
-			$NewDbDef= new DbDef(array(),0);
+		if($_SESSION['InitBd'] != false) { 
+			$_SESSION['NewDbDef'] = new DbDef(array(),0);
 			$_SESSION['InitBd'] = true;	
+			$_SESSION['newDM'] = new DiskManager();
 		}
 	}
 
@@ -28,6 +28,7 @@
 		switch ($typeCommande) {
 			case "create":
 				createRelation($detailCommande);
+				createRelation($detailCommande);
 			break;
 			default:
 				$erreur = "Commande non reconnue";
@@ -35,21 +36,13 @@
 		}
 	}
 
-
-	//function create($detailCommande) {
-		//$newRelSchema = new RelSchema($detailCommande);
-	//}
-
 	function createRelation($detailCommande) {
-		$nomRelation = $detailCommande[1];
-		$nombreDeColonne = $detailCommande[2];
-		$typeColonne = array();
-		for($i=3;$i<sizeof($detailCommande);$i++) {
-			array_push($typeColonne,$detailCommande[$i]);
-		}
-
+		$newRelSchema = new RelSchema($detailCommande);
+		$newRelDef = new RelDef($_SESSION['NewDbDef']->getCompteurDeRelation(),$newRelSchema);
+		$_SESSION['NewDbDef']->ajoutRelation($newRelDef);
+		//mettre une condition au cas ou sa écrase
+		$_SESSION['newDM']->createFile($newRelDef->getFileId());
 	}
-
 
 	//fonction de test
 	function afficheTableau($tab) {
