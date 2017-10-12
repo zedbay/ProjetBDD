@@ -11,8 +11,11 @@ public class DiskManager {
 	public static void createFile(int fileId) {
 		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
 		try {
-			FileWriter fw = new FileWriter(newFile);
-			fw.close();
+			if(newFile.createNewFile()) {
+				System.out.println("Fichier crée");
+			} else {
+				System.out.println("Fichier existant");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -23,7 +26,9 @@ public class DiskManager {
 		try {
 			RandomAccessFile out = new RandomAccessFile(newFile, "rw");
 			byte[] buf = new byte[4096];
-			//out.seek();
+			long tailleFichier = newFile.length();
+			System.out.println(tailleFichier);
+			out.seek(tailleFichier);
 			out.write(buf);
 		} catch (IOException e) {
 			e.printStackTrace();
