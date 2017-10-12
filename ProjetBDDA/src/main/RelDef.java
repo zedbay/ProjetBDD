@@ -3,17 +3,17 @@ package main;
 public class RelDef {
 		
 	private int fileId;
-	private relSchema relShema;
-	public RelDef (int fileId,relSchema relShema){
+	private RelSchema relShema;
+	public RelDef (int fileId,RelSchema relShema){
 		this.fileId = fileId;
-		relSchema rel = new relSchema();	
+		//RelSchema rel = new RelSchema();	
 	}
 
 	public int getFileId() { 
 		return fileId;
 	}
 	
-	public relSchema getRelShema() {
+	public RelSchema getRelShema() {
 		return relShema;
 	}
 	
