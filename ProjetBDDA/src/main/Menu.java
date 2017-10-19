@@ -1,4 +1,4 @@
-package bdd;
+package main;
 
 public  class Menu implements Choix,Affichage {
 
@@ -25,7 +25,7 @@ public  class Menu implements Choix,Affichage {
 				System.out.println("creationRelation");
 				break;
 			default: 
-				System.out.println("Choix erroné");
+				System.out.println("Choix erronï¿½");
 				Affichage.afficher();
 		}
 	}
