@@ -21,8 +21,7 @@ public class DiskManager {
 	
 	public static PageId addPage(int fileId) {
 		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
-		try {
-			RandomAccessFile out = new RandomAccessFile(newFile, "rw");
+		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
 			byte[] buf = new byte[4096];
 			long tailleFichier = newFile.length();
 			out.seek(tailleFichier);
@@ -37,19 +36,24 @@ public class DiskManager {
 	public static StringBuffer  readPage(PageId pageId) {
 		StringBuffer res = new StringBuffer("");
 		File newFile = new File("DB" + File.separator + "Data_" + pageId.getFileId() + ".rf");
-		try {
-			RandomAccessFile in = new RandomAccessFile(newFile, "r");
+		try (RandomAccessFile in = new RandomAccessFile(newFile, "r")){
 			in.seek(4096*pageId.getIdx());
 			for(int i=0;i<4096;i++) {
 				res.append(in.readByte());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 		return(res);
 	}
 	
-	public static void writePage() {
-		
+	public static void writePage(PageId pageId, String buffer) {
+		File newFile = new File("DB" + File.separator + "Data_" + pageId.getFileId() + ".rf");
+		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")){
+			out.seek(4096*pageId.getIdx());
+			out.writeBytes(buffer);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
