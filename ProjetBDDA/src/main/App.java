@@ -6,8 +6,8 @@ public class App {
 		
 		Fenetre fenetre = new Fenetre();
 		fenetre.setVisible(true);
-		
-		
+		Choix choice =new Menu(2);
+		choice.choix(2);
 	}
 	
 }
