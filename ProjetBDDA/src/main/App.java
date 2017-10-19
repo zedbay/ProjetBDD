@@ -3,7 +3,11 @@ package main;
 public class App {
 
 	public static void main(String[] args) {
-		System.out.println("hello world");
+		
+		Fenetre fenetre = new Fenetre();
+		fenetre.setVisible(true);
+		
+		
 	}
-
+	
 }
