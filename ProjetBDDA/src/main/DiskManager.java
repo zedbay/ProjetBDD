@@ -27,7 +27,6 @@ public class DiskManager {
 			RandomAccessFile out = new RandomAccessFile(newFile, "rw");
 			byte[] buf = new byte[4096];
 			long tailleFichier = newFile.length();
-			System.out.println(tailleFichier);
 			out.seek(tailleFichier);
 			out.write(buf);
 		} catch (IOException e) {
