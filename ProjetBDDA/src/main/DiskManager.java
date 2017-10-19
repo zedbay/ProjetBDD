@@ -1,8 +1,6 @@
 package main;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -36,8 +34,19 @@ public class DiskManager {
 		return(pi1);
 	}
 	
-	public static void  readPage(PageId pageId) {
-		
+	public static StringBuffer  readPage(PageId pageId) {
+		StringBuffer res = new StringBuffer("");
+		File newFile = new File("DB" + File.separator + "Data_" + pageId.getFileId() + ".rf");
+		try {
+			RandomAccessFile in = new RandomAccessFile(newFile, "r");
+			in.seek(4096*pageId.getIdx());
+			for(int i=0;i<4096;i++) {
+				res.append(in.readByte());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return(res);
 	}
 	
 	public static void writePage() {
