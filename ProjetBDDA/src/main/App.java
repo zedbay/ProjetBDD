@@ -4,26 +4,29 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class App {
+	
+	public DbDef instanceUniqueDbDef;
+	
+	public App() {
+		init();
+	}
 
 	public static void main(String[] args) {
-		init();
 		//Fenetre fenetre = new Fenetre();
-		
 		//Creation du menu et début
 		//Menu menu=new Menu();
 		//menu.start();
 	}
 	
-	public static void init() {
-		DbDef instanceUniqueDbDef = new DbDef(); 
+	public void init() {
+		this.instanceUniqueDbDef = new DbDef(); 
 	}
 	
 	/******
-	 * 
 	 * @param commande reçu de l'UI
 	 * @return une relation 
 	 */
-	public static RelSchema creationRelation(String commande) {
+	public void creationRelation(String commande) {
 		StringTokenizer commande1 = new StringTokenizer(commande);
 		//test si le premier mot est "create"
 		if(commande1.nextElement().equals(new StringTokenizer("create").nextElement())) {
@@ -34,10 +37,11 @@ public class App {
 				typeColRelation.add(commande1.nextToken().toString());
 			}
 			RelSchema r1 =  new RelSchema(nameRelation, nbrColRelation, typeColRelation);
-			return(r1);
+			RelDef rd1 = new RelDef(this.instanceUniqueDbDef.getCompteurRelation(), r1);
+			this.instanceUniqueDbDef.ajoutRelDef(rd1);
+			DiskManager.createFile(rd1.getFileId());
 		} else {
 			System.out.println("Erreur commande non reconnue");
-			return(null);
 		}
 	}
 	

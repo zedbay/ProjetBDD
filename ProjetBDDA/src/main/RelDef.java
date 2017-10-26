@@ -3,10 +3,11 @@ package main;
 public class RelDef {
 		
 	private int fileId;
-	private RelSchema relShema;
-	public RelDef (int fileId,RelSchema relShema){
+	private RelSchema relSchema;
+	
+	public RelDef (int fileId, RelSchema relSchema){
 		this.fileId = fileId;
-		//RelSchema rel = new RelSchema();	
+		this.relSchema = relSchema;
 	}
 
 	public int getFileId() { 
@@ -14,7 +15,7 @@ public class RelDef {
 	}
 	
 	public RelSchema getRelShema() {
-		return relShema;
+		return relSchema;
 	}
 	
 	public static void main(String[] args) {

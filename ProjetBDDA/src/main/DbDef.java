@@ -11,4 +11,13 @@ public class DbDef {
 		this.compteurRelation = 0;
 		this.ar1 = new ArrayList<RelDef>();
 	}
+	
+	public void ajoutRelDef (RelDef r1) {
+		ar1.add(r1);
+		compteurRelation++;
+	}
+	
+	public int getCompteurRelation () {
+		return(this.compteurRelation);
+	}
 }
