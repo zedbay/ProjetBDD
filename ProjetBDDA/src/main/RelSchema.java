@@ -14,4 +14,9 @@ public class RelSchema {
 		this.nbrCol = nbrCol;
 		this.typeCol = typeCol;
 	}
+	
+	public String toString() {
+		String rep = new String("La relation " + this.nom + " a " + this.nbrCol + " colonnes qui sont : " +  this.typeCol.toString());
+		return(rep);
+	}
 }
