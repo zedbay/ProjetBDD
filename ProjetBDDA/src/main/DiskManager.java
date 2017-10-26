@@ -6,6 +6,19 @@ import java.io.RandomAccessFile;
 
 public class DiskManager {
 	
+	public static boolean createCatalog() {
+		File newFile = new File("DB" + File.separator +"Catalog.def");
+		try {
+			if(newFile.createNewFile()) {
+				return(true);
+			} else {
+				return(false);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return(false);
+		}
+	}
 	public static void createFile(int fileId) {
 		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
 		try {

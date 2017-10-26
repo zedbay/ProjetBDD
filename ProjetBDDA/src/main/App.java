@@ -5,21 +5,20 @@ import java.util.StringTokenizer;
 
 public class App {
 	
-	public DbDef instanceUniqueDbDef;
-	
-	public App() {
-		init();
-	}
+	static DbDef instanceUniqueDbDef;
 
 	public static void main(String[] args) {
 		//Fenetre fenetre = new Fenetre();
 		//Creation du menu et début
 		//Menu menu=new Menu();
 		//menu.start();
+		init();
+		System.out.println(instanceUniqueDbDef);
+		finish();
 	}
 	
-	public void init() {
-		this.instanceUniqueDbDef = new DbDef(); 
+	public static void init() {
+		instanceUniqueDbDef = new DbDef(); 
 	}
 	
 	/******
@@ -43,6 +42,10 @@ public class App {
 		} else {
 			System.out.println("Erreur commande non reconnue");
 		}
+	}
+	
+	public static void finish() {
+		System.out.println(DiskManager.createCatalog());
 	}
 	
 }

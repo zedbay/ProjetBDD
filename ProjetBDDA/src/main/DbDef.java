@@ -20,4 +20,9 @@ public class DbDef {
 	public int getCompteurRelation () {
 		return(this.compteurRelation);
 	}
+	
+	public String toString() {
+		String rep = new String("La bdd a " + this.compteurRelation + " relations" + this.ar1.toString());
+		return(rep);
+	}
 }
