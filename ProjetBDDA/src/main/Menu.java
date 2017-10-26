@@ -1,4 +1,4 @@
-package bdd;
+package main;
 
 import up5.mi.pary.term.Terminal;
 
@@ -25,7 +25,7 @@ public  class Menu implements Affichage {
 				System.out.println("creationRelation");
 				break;
 			default: 
-				System.out.println("Choix erroné");
+				System.out.println("Choix erronÃ©");
 				break;
 		}
 		}while(choix!=0);
