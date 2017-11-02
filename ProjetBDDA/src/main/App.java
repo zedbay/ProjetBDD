@@ -46,6 +46,7 @@ public class App {
 	
 	public static void finish() {
 		System.out.println(DiskManager.createCatalog());
+		
 	}
 	
 }
