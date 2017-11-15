@@ -18,7 +18,4 @@ public class RelDef {
 		return relSchema;
 	}
 	
-	public static void main(String[] args) {
-			System.out.println("Stephhawk le BG!");
-		}
 }

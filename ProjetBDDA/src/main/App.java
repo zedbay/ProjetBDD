@@ -1,25 +1,30 @@
 package main;
 
+
+import javafx.application.Application;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class App {
+public class App extends Application{
+
+
+
 	
 	static DbDef instanceUniqueDbDef;
 
 	public static void main(String[] args) {
-		//Fenetre fenetre = new Fenetre();
-		//Creation du menu et début
-		//Menu menu=new Menu();
-		//menu.start();
-		init();
+		Application.launch(App.class, args);
+//		init();
 		System.out.println(instanceUniqueDbDef);
 		finish();
 	}
 	
-	public static void init() {
-		instanceUniqueDbDef = new DbDef(); 
-	}
+//	public static void init() {
+//		instanceUniqueDbDef = new DbDef(); 
+//	}
 	
 	/******
 	 * @param commande reçu de l'UI
@@ -46,7 +51,16 @@ public class App {
 	
 	public static void finish() {
 		System.out.println(DiskManager.createCatalog());
-		
+	}
+
+	@Override
+	public void start(Stage primaryStage) {
+		primaryStage.setTitle("Mini SGBD");
+		Pane pane = new Pane();
+		SceneBDD scene = new SceneBDD(pane, 600, 550, Color.ALICEBLUE);
+        primaryStage.setScene(scene.getScene());
+        primaryStage.setResizable(false);
+        primaryStage.show();
 	}
 	
 }
