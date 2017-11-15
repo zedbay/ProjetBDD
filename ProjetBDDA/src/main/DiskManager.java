@@ -5,24 +5,25 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class DiskManager {
-	
+
 	public static boolean createCatalog() {
-		File newFile = new File("DB" + File.separator +"Catalog.def");
+		File newFile = new File("DB" + File.separator + "Catalog.def");
 		try {
-			if(newFile.createNewFile()) {
-				return(true);
+			if (newFile.createNewFile()) {
+				return (true);
 			} else {
-				return(false);
+				return (false);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			return(false);
+			return (false);
 		}
 	}
+
 	public static void createFile(int fileId) {
 		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
 		try {
-			if(newFile.createNewFile()) {
+			if (newFile.createNewFile()) {
 				System.out.println("Fichier crée");
 			} else {
 				System.out.println("Fichier existant");
@@ -31,7 +32,7 @@ public class DiskManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static PageId addPage(int fileId) {
 		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
 		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
@@ -42,30 +43,30 @@ public class DiskManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		PageId pi1 = new PageId(1,1);
-		return(pi1);
+		PageId pi1 = new PageId(1, 1);
+		return (pi1);
 	}
-	
-	public static StringBuffer  readPage(PageId pageId) {
+
+	public static StringBuffer readPage(PageId pageId) {
 		StringBuffer res = new StringBuffer("");
 		File newFile = new File("DB" + File.separator + "Data_" + pageId.getFileId() + ".rf");
-		try (RandomAccessFile in = new RandomAccessFile(newFile, "r")){
-			in.seek(4096*pageId.getIdx());
-			for(int i=0;i<4096;i++) {
+		try (RandomAccessFile in = new RandomAccessFile(newFile, "r")) {
+			in.seek(4096 * pageId.getIdx());
+			for (int i = 0; i < 4096; i++) {
 				res.append(in.readByte());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
-		return(res);
+		}
+		return (res);
 	}
-	
+
 	public static void writePage(PageId pageId, String buffer) {
 		File newFile = new File("DB" + File.separator + "Data_" + pageId.getFileId() + ".rf");
-		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")){
-			out.seek(4096*pageId.getIdx());
+		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
+			out.seek(4096 * pageId.getIdx());
 			out.writeBytes(buffer);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
