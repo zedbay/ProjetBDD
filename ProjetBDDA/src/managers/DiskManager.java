@@ -23,31 +23,34 @@ public class DiskManager {
 		}
 	}
 
-	public static void createFile(int fileId) {
-		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
-		try {
-			if (newFile.createNewFile()) {
-				System.out.println("Fichier crÃ©e");
-			} else {
-				System.out.println("Fichier existant");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+	public static void createFile(int fileId) throws IOException {
+
+		File newFile = new File("BDD" + File.separator + "Data_" + fileId + ".rf");
+		if (newFile.createNewFile()) {
+			System.out.println("Fichier créé");
+		} else {
+			System.out.println("Fichier existant");
 		}
 	}
 
-	public static PageId addPage(int fileId) {
-		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
+
+	public static PageId addPage(int fileId) throws IOException {
+
+		File newFile = new File("BDD" + File.separator + "Data_" + fileId + ".rf");
 		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
-			byte[] buf = new byte[4096];
-			long tailleFichier = newFile.length();
-			out.seek(tailleFichier);
-			out.write(buf);
-		} catch (IOException e) {
-			e.printStackTrace();
+			int idx = (int) (newFile.length() / Constante.PAGESIZE);
+			out.seek(newFile.length());
+
+			for (int i = 0; i < Constante.PAGESIZE; i++) {
+				out.writeByte((byte) 0);
+			}
+
+			out.close();
+			return (new PageId(fileId, idx));
 		}
-		PageId pi1 = new PageId(1, 1);
-		return (pi1);
+		
+		
+
 	}
 
 	public static void readPage(PageId pageId, ByteBuffer buffer) {
@@ -64,13 +67,21 @@ public class DiskManager {
 
 	}
 
-	public static void writePage(PageId pageId, String buffer) {
-		File newFile = new File("DB" + File.separator + "Data_" + pageId.getFileId() + ".rf");
-		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
-			out.seek(4096 * pageId.getIdx());
-			out.writeBytes(buffer);
-		} catch (IOException e) {
-			e.printStackTrace();
+	public static void writePage(PageId page, ByteBuffer buffer) throws IOException {
+
+		if (page != null) {
+
+			buffer.position(0);
+			File newFile = new File("DB" + File.separator + "Data_" + page.getFileId() + ".rf");
+			try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
+				out.seek(Constante.PAGESIZE * page.getIdx());
+				for (int i = 0; i < Constante.PAGESIZE; i++) {
+					out.writeByte(buffer.get(i));
+				}
+
+				out.close();
+
+			}
 		}
 	}
 }
