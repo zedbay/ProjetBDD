@@ -20,4 +20,9 @@ public class RelSchema {
 				"La relation " + this.nom + " a " + this.nbrCol + " colonnes qui sont : " + this.typeCol.toString());
 		return (rep);
 	}
+	
+	public int getStringT() {
+		return(stringT);
+	}
+
 }

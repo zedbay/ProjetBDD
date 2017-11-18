@@ -1,15 +1,9 @@
 package main;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-
 import javafx.application.Application;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import managers.BufferManager;
 
 public class App extends Application {
 
