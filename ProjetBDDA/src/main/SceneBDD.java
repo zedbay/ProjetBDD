@@ -19,7 +19,7 @@ public class SceneBDD {
 	private Button btn = new Button();
 	private TextField text = new TextField();
 	private Scene scene;
-	private TextArea area = new TextArea();
+	private static TextArea area = new TextArea();
 
 	public SceneBDD(Pane pane, double width, double height, Color color) {
 		this.scene = new Scene(pane, width, height, color);
@@ -61,9 +61,16 @@ public class SceneBDD {
 		text.setTranslateX(10);
 
 		pane.getChildren().setAll(text, btn, area);
+		
 	}
-
+	
+	public static void setArea(String text) {
+		area.appendText(text);
+	}
+	
 	public Scene getScene() {
 		return this.scene;
 	}
+
+
 }

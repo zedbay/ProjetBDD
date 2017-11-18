@@ -1,9 +1,12 @@
 package main;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import managers.GlobalManager;
 
 public class App extends Application {
 
@@ -13,13 +16,14 @@ public class App extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("Mini SGBD");
 		Pane pane = new Pane();
 		SceneBDD scene = new SceneBDD(pane, 600, 550, Color.ALICEBLUE);
 		primaryStage.setScene(scene.getScene());
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		GlobalManager.init();
 	}
 
 }

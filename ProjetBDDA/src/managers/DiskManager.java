@@ -6,6 +6,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 
 import constantes.Constante;
+import main.SceneBDD;
 
 public class DiskManager {
 
@@ -25,18 +26,18 @@ public class DiskManager {
 
 	public static void createFile(int fileId) throws IOException {
 
-		File newFile = new File("BDD" + File.separator + "Data_" + fileId + ".rf");
+		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
 		if (newFile.createNewFile()) {
-			System.out.println("Fichier créé");
+			SceneBDD.setArea("Fichier créé\n");
 		} else {
-			System.out.println("Fichier existant");
+			SceneBDD.setArea("Fichier existant\n");
 		}
 	}
 
 
 	public static PageId addPage(int fileId) throws IOException {
 
-		File newFile = new File("BDD" + File.separator + "Data_" + fileId + ".rf");
+		File newFile = new File("DB" + File.separator + "Data_" + fileId + ".rf");
 		try (RandomAccessFile out = new RandomAccessFile(newFile, "rw")) {
 			int idx = (int) (newFile.length() / Constante.PAGESIZE);
 			out.seek(newFile.length());

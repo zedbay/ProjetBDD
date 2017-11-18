@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 import main.DbDef;
 import main.RelDef;
 import main.RelSchema;
+import main.SceneBDD;
 
 public class GlobalManager {
 
@@ -47,7 +48,7 @@ public class GlobalManager {
 			DiskManager.createFile(rd1.getFileId());
 			return r1;
 		} else {
-			System.out.println("Erreur commande non reconnue");
+			SceneBDD.setArea("Erreur commande non reconnue");
 			return null;
 		}
 		
