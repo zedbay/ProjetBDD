@@ -16,6 +16,10 @@ public class DbDef {
 		ar1.add(r1);
 		compteurRelation++;
 	}
+	
+	public ArrayList<RelDef> getAr1() {
+		return(this.ar1);
+	}
 
 	public int getCompteurRelation() {
 		return (this.compteurRelation);
