@@ -2,6 +2,8 @@ package main;
 
 import javafx.scene.input.*;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import managers.GlobalManager;
 
 public class SceneBDD {
 
@@ -27,7 +30,13 @@ public class SceneBDD {
 		btn.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-
+				try {
+					area.appendText(GlobalManager.creationRelation(text.getText()).toString());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				text.setText(null);
 			}
 		});
 
@@ -41,7 +50,7 @@ public class SceneBDD {
 			public void handle(KeyEvent key) {
 				if (key.getCode() == KeyCode.ENTER) {
 					area.appendText(text.getText());
-					text.setText("");
+					text.setText(null);
 				}
 
 			}
