@@ -32,6 +32,7 @@ public class GlobalManager {
 			dbDef = new bdd.DbDef();
 		}
 		refreshHeapFiles();
+		BufferManager.bufferManager();
 	}
 	
 	public static void createRelation(String[] rep) throws IOException {
@@ -45,7 +46,7 @@ public class GlobalManager {
 				bdd.RelDef rd1 = new bdd.RelDef(dbDef.getCompteurRelation(),rs1);
 				DiskManager.createFile(dbDef.getCompteurRelation());
 				dbDef.ajoutRelDef(rd1);
-				bdd.HeapFile hp1 = new bdd.HeapFile(rd1);
+				HeapFile hp1 = new bdd.HeapFile(rd1);
 				listHeapFile.add(hp1);
 				hp1.createHeader();
 			} catch (argumentInvalide e) { }
@@ -61,6 +62,7 @@ public class GlobalManager {
 				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 			oos.writeObject(dbDef);
 		}
+		BufferManager.flushAll();
 	}
 	
 	public static void refreshHeapFiles() {
@@ -85,7 +87,7 @@ public class GlobalManager {
 		try {
 			HeapFile hp = null;
 			for(int j=0;j<listHeapFile.size();j++) {
-				if(listHeapFile.get(j).getRD().getRelShema().getNom().equals(nomRelation)) {
+				if(listHeapFile.get(j).getRd().getRelShema().getNom().equals(nomRelation)) {
 					hp = listHeapFile.get(j);
 				}
 			}
@@ -95,5 +97,21 @@ public class GlobalManager {
 			hp.insertRecord(r1);
 		} catch (RelationErreur e) { }
 		System.out.println(r1);
+	}
+
+	public static void selectAll(String name) throws FileNotFoundException, IOException {
+		HeapFile hp = null;
+		try {
+			for(int i=0;i<listHeapFile.size();i++) {
+				if(listHeapFile.get(i).getRd().getRelShema().getNom().equals(name)) {
+					hp = listHeapFile.get(i);
+				}
+				else {
+					throw new RelationErreur();
+				}
+			}
+			hp.printAllRecord();
+		} catch (RelationErreur e) { }
+		
 	}
 }

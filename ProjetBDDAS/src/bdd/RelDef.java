@@ -9,11 +9,13 @@ public class RelDef implements Serializable {
 	private RelSchema relSchema;
 	private int recordSize;
 	private int slotCount;
+	private PageId headerPage;
 
 	public RelDef(int fileId, RelSchema relSchema) {
 		this.fileId = fileId;
 		this.relSchema = relSchema;
 		this.recordSize = relSchema.calculRecordSize();
+		this.headerPage = new PageId(fileId,0);
 		this.calculSlotCount();
 	}
 
@@ -41,5 +43,8 @@ public class RelDef implements Serializable {
 		this.slotCount = (int) Constante.PAGESIZE/(this.recordSize+1);
 	}
 	
+	public PageId getHeaderPage() {
+		return(this.headerPage);
+	}
 
 }

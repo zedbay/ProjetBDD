@@ -30,6 +30,9 @@ public class MenuConsole {
 				case "insert":
 					manager.GlobalManager.insert(rep);
 					break;
+				case "selectall":
+					manager.GlobalManager.selectAll(rep[1]);
+					break;
 				default:
 					System.out.println("Commande non reconnue, taper help pour de l'aide");
 			}

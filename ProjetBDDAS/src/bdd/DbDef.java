@@ -28,7 +28,10 @@ public class DbDef implements Serializable {
 	}
 
 	public String toString() {
-		String rep = new String("La bdd a " + this.compteurRelation + " relations : " + this.ar1.toString());
+		String rep = new String("La bdd a " + this.compteurRelation + " relations : ");
+		for(int i=0;i<this.ar1.size();i++) {
+			rep = rep + "\n" + ar1.get(i);
+		}
 		return (rep);
 	}
 }

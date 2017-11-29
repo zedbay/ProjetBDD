@@ -18,4 +18,5 @@ public class Debug {
 			System.out.println("debug nécessite un argument");
 		}
 	}
+	
 }

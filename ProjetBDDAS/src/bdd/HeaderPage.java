@@ -12,8 +12,13 @@ public class HeaderPage {
 		this.infos = infos;
 	}
 	
+	public HeaderPage(int npdd) {
+		this.nbPageDeDonnees = npdd;
+		this.infos = new ArrayList<Infos>();
+	}
+	
 	public HeaderPage() {
-		
+		this.infos = new ArrayList<Infos>();
 	}
 	
 	public void setNbPageDeDonnees(int nb) {

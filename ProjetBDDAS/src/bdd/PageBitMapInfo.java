@@ -8,12 +8,16 @@ public class PageBitMapInfo {
 		this.slotStatus = slotStatus;
 	}
 	
-	public PageBitMapInfo() {
-		
+	public PageBitMapInfo(int size) {
+		this.slotStatus = new byte[size];
 	}
 	
 	public byte[] getSlotStatus() {
 		return(this.slotStatus);
+	}
+	
+	public byte getSlotStatusAt(int index) {
+		return (this.slotStatus[index]);
 	}
 	
 	public void setSlotStatus(int i, byte b) {

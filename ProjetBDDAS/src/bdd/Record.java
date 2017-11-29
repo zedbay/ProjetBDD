@@ -10,6 +10,10 @@ public class Record {
 		setValeursAttributs(va);
 	}
 	
+	public Record() {
+		this.valeursAttributs = new ArrayList<String>();
+	}
+	
 	public void setValeursAttributs(ArrayList<String> va) {
 		this.valeursAttributs = va;
 	}

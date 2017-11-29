@@ -7,7 +7,6 @@ public class App {
 
 	public static void main(String[] arg) throws IOException, ClassNotFoundException {
 		manager.GlobalManager.init();
-		//test();
 		composant.MenuConsole.ligneCommande();	
 	}
 	

@@ -1,7 +1,10 @@
 package bdd;
 
-public class PageId {
+import java.io.Serializable;
 
+public class PageId implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public int fileId;
 	public int idx;
 
@@ -14,7 +17,7 @@ public class PageId {
 		this.fileId = fileId;
 	}
 
-	private void setIdx(int idx) {
+	public void setIdx(int idx) {
 		this.idx = idx;
 	}
 

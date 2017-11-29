@@ -1,5 +1,6 @@
 package manager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
@@ -60,6 +61,14 @@ public class BufferManager {
 			}
 		}
 		return null;
+	}
+	
+	public static void flushAll() throws FileNotFoundException, IOException {
+		for(int i=0;i<bdd.Constante.F;i++) {
+			if(frames[i].isDirty()) {
+				DiskManager.writePage(frames[i].getPageId(), frames[i].getBuffer());
+			}
+		}
 	}
 
 }

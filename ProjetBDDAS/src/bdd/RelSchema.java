@@ -48,7 +48,7 @@ public class RelSchema implements Serializable {
 				taille += Constante.STRINGT*2;
 			}
 		}
-		return (taille);
+		return (taille+1);
 	}
 	
 	public ArrayList<String> getTypeCol() {
