@@ -118,6 +118,18 @@ public class GlobalManager {
 			hp.printAllRecord();
 		} catch (RelationErreur e) {
 		}
+	}
+
+	public static void select(String[] rep) throws FileNotFoundException, IOException {
+		String nomRelation = rep[1];
+		int indice_colonne = Integer.parseInt(rep[2]);
+		String v = rep[3];
+
+		for (HeapFile heap : listHeapFile) {
+			if (heap.getRd().getRelShema().getNom().equals(nomRelation)) {
+				heap.printAllRecordWithFilterint(indice_colonne, v);
+			}
+		}
 
 	}
 
@@ -142,10 +154,11 @@ public class GlobalManager {
 			for (String str : line.split(",")) {
 				array.add(str);
 			}
-			Record record=new Record(array);
-			HeapFile hp=new HeapFile();
+			Record record = new Record(array);
+			HeapFile hp = new HeapFile();
 			hp.insertRecord(record);
 		}
 		br.close();
 	}
+
 }

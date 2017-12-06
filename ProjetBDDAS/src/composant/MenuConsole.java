@@ -41,6 +41,8 @@ public class MenuConsole {
 				case"fill":
 					manager.GlobalManager.fill(rep);
 					break;
+				case"select":
+					manager.GlobalManager.select(rep);
 				default:
 					System.out.println("Commande non reconnue, taper help pour de l'aide");
 			}
