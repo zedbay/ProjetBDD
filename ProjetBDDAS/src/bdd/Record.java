@@ -22,6 +22,10 @@ public class Record {
 		return(this.valeursAttributs.get(i));
 	}
 	
+	public ArrayList<String > getValeurAttributs(){
+		return this.valeursAttributs;
+	}
+	
 	public String toString() {
 		return("Les valeurs du record sont : " + valeursAttributs);
 	}

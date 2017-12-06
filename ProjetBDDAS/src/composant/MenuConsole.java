@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+
+
 public class MenuConsole {
 	
-	public static void ligneCommande() throws IOException {
+	public static void ligneCommande() throws IOException{
 		Scanner sc = new Scanner(System.in);
 		String[] rep;
 		do {
@@ -32,6 +34,12 @@ public class MenuConsole {
 					break;
 				case "selectall":
 					manager.GlobalManager.selectAll(rep[1]);
+					break;
+				case"clean":
+					manager.GlobalManager.clean();
+					break;
+				case"fill":
+					manager.GlobalManager.fill(rep);
 					break;
 				default:
 					System.out.println("Commande non reconnue, taper help pour de l'aide");

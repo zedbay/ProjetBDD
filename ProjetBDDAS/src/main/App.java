@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class App {
 	
@@ -8,6 +9,7 @@ public class App {
 	public static void main(String[] arg) throws IOException, ClassNotFoundException {
 		manager.GlobalManager.init();
 		composant.MenuConsole.ligneCommande();	
+		
 	}
 	
 	public static void test () throws IOException {
